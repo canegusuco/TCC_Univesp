@@ -1837,6 +1837,151 @@ DROP TABLE IF EXISTS `TSE_fefc_genero_2020.csv`;
 DROP TABLE IF EXISTS `TSE_fp_cor_raca_2020.csv`;
 DROP TABLE IF EXISTS `TSE_fp_genero_2020.csv`;
 
+DROP TABLE IF EXISTS CGU_Emendas_Parlamentares;
+
+CREATE TABLE CGU_Emendas_Parlamentares AS
+SELECT
+  emp.`Código da Emenda` AS Codigo_Emenda,
+  emp.`Ano da Emenda` AS Ano_Emenda,
+  emp.`Tipo de Emenda` AS Tipo_Emenda,
+  emp.`Código do Autor da Emenda` AS Codigo_Autor_Emenda,
+  emp.`Nome do Autor da Emenda` AS Nome_Autor_Emenda,
+  emp.`Número da emenda` AS Numero_Emenda,
+  emp.`Localidade de aplicação do recurso` AS Localidade_Aplicacao_Recurso,
+  emp.`Código Município IBGE` AS Codigo_Municipio,
+  emp.`Município` AS Nome_Municipio,
+  emp.`Código UF IBGE` AS Codigo_UF,
+  emp.`UF` AS Nome_UF,
+  emp.`Região` AS Nome_Regiao,
+  emp.`Código Função` AS Codigo_Funcao,
+  emp.`Nome Função` AS Nome_Funcao,
+  emp.`Código Subfunção` AS Codigo_Subfuncao,
+  emp.`Nome Subfunção` AS Nome_Subfuncao,
+  emp.`Código Programa` AS Codigo_Programa,
+  emp.`Nome Programa` AS Nome_Programa,
+  emp.`Código Ação` AS Codigo_Acao,
+  emp.`Nome Ação` AS Nome_Acao,
+  emp.`Código Plano Orçamentário` AS Codigo_Plano_Orcamentario,
+  emp.`Nome Plano Orçamentário` AS Nome_Plano_Orcamentario,
+  emp.`Valor Empenhado` AS Valor_Empenhado,
+  emp.`Valor Liquidado` AS Valor_Liquidado,
+  emp.`Valor Pago` AS Valor_Pago,
+  emp.`Valor Restos A Pagar Inscritos` AS Valor_Restos_Pagar_Inscritos,
+  emp.`Valor Restos A Pagar Cancelados` AS Valor_Restos_Pagar_Cancelados,
+  emp.`Valor Restos A Pagar Pagos` AS Valor_Restos_Pagar_Pagos
+FROM `CGU_EmendasParlamentares.csv` emp;
+
+DROP TABLE IF EXISTS CGU_Emendas_Parlamentares_Convenios;
+
+CREATE TABLE CGU_Emendas_Parlamentares_Convenios AS
+SELECT
+  emp.`Código da Emenda` AS Codigo_Emenda,
+  emp.`Código Função` AS Codigo_Funcao,
+  emp.`Nome Função` AS Nome_Funcao,
+  emp.`Código Subfunção` AS Codigo_Subfuncao,
+  emp.`Nome Subfunção` AS Nome_Subfuncao,
+  emp.`Localidade do gasto` AS Localidade_Gasto,
+  emp.`Tipo de emenda` AS Tipo_Emenda,
+  emp.`Data Publicação Convênio` AS Data_Publicacao_Convenio,
+  emp.`Convenente` AS Convenente,
+  emp.`Objeto Convênio` AS Objeto_Convenio,
+  emp.`Número Convênio` AS Numero_Convenio,
+  emp.`Valor Convênio` AS Valor_Convenio
+FROM `CGU_EmendasParlamentares_Convenios.csv` emp;
+
+DROP TABLE IF EXISTS CGU_Emendas_Parlamentares_Favorecidos;
+
+CREATE TABLE CGU_Emendas_Parlamentares_Favorecidos AS
+SELECT
+  emp.`Código da Emenda` AS Codigo_Emenda,
+  emp.`Código do Autor da Emenda` AS Codigo_Autor_Emenda,
+  emp.`Nome do Autor da Emenda` AS Nome_Autor_Emenda,
+  emp.`Número da emenda` AS Numero_Emenda,
+  emp.`Tipo de Emenda` AS Tipo_Emenda,
+  emp.`Ano/Mês` AS Ano_Mes_Emenda,
+  emp.`Código do Favorecido` AS Codigo_Favorecido,
+  emp.`Favorecido` AS Favorecido,
+  emp.`Natureza Jurídica` AS Natureza_Juridica,
+  emp.`Tipo Favorecido` AS Tipo_Favorecido,
+  emp.`UF Favorecido` AS UF_Favorecido,
+  emp.`Município Favorecido` AS Municipio_Favorecido,
+  emp.`Valor Recebido` AS Valor_Recebido
+FROM `CGU_EmendasParlamentares_PorFavorecido.csv` emp;
+
+DROP TABLE IF EXISTS CGU_Contratos;
+
+CREATE TABLE CGU_Contratos AS
+SELECT
+  con.`DATA ASSINATURA CONTRATO` AS Data_Assinatura_Contrato,
+  con.`DATA PUBLICAÇÃO DOU` AS Data_Publicacao_DOU,
+  con.`DATA INÍCIO VIGÊNCIA` AS Data_Inicio_Vigencia,
+  con.`DATA FIM VIGÊNCIA` AS Data_Fim_Vigencia,
+  con.`ORGÃO SUPERIOR CONTRATANTE` AS Orgao_Superior_Contratante,
+  con.`ÓRGÃO / ENTIDADE VINCULADA CONTRATANTE` AS Orgao_Entidade_Vinculada_Contratante,
+  con.`UNIDADE GESTORA CONTRATANTE` AS Unidade_Gestora_Contratante,
+  con.`FORMA DE CONTRATAÇÃO` AS Forma_Contratacao,
+  con.`GRUPO DE OBJETO DE CONTRATAÇÃO` AS Grupo_Objeto_Contratacao,
+  con.`NÚMERO DO CONTRATO` AS Numero_Contrato,
+  con.`NOME DO FORNECEDOR` AS Nome_Fornecedor,
+  con.`CPF / CNPJ DO FORNECEDOR` AS CPF_CNPJ_Fornecedor,
+  con.`SITUAÇÃO` AS Situacao,
+  con.`VALOR CONTRATADO` AS Valor_Contratado
+FROM `CGU_Contratos.csv` con;
+
+DROP TABLE IF EXISTS CGU_Codevasf_Convenios;
+
+CREATE TABLE CGU_Codevasf_Convenios AS
+SELECT
+  cco.`Número` AS Numero,
+  cco.`Número Original` AS Numero_Original,
+  cco.`UF` AS UF,
+  cco.`Município` AS Municipio,
+  cco.`Situação` AS Situacao,
+  cco.`Tipo de Instrumento` AS Tipo_Instrumento,
+  cco.`Objeto` AS Objeto,
+  cco.`Órgão Superior` AS Orgao_Superior,
+  cco.`Órgão/Entidade vinculada` AS Orgao_Entidade_Vinculada,
+  cco.`Concedente` AS Concedente,
+  cco.`Convenente` AS Convenente,
+  cco.`Tipo de convenente` AS Tipo_Convenente,
+  cco.`Número do Processo` AS Numero_Processo,
+  cco.`Data de início da vigência` AS Data_Inicio_Vigencia,
+  cco.`Data de fim da vigência` AS Data_Fim_Vigencia,
+  cco.`Data da publicação` AS Data_Publicacao,
+  cco.`Valor Liberado (R$)` AS Valor_Liberado,
+  cco.`Valor Celebrado (R$)` AS Valor_Celebrado
+FROM `CGU_Convenios_Codevasf.csv` cco;
+
+DROP TABLE IF EXISTS CGU_Codevasf_Servidores;
+
+CREATE TABLE CGU_Codevasf_Servidores AS
+SELECT
+  sco.`Tipo` AS Tipo,
+  sco.`CPF` AS CPF,
+  sco.`Nome do Servidor` AS Nome_Servidor,
+  sco.`Órgão Superior de Lotação (SIAPE)` AS Orgao_Superior_Lotacao,
+  sco.`Órgão de Lotação (SIAPE)` AS Orgao_Lotacao,
+  sco.`Órgão Superior de Exercício (SIAPE)` AS Orgao_Superior_Exercicio,
+  sco.`Órgão de Exercício (SIAPE)` AS Orgao_Exercicio,
+  sco.`UORG de Lotação (SIAPE)` AS UORG_Lotacao,
+  sco.`UORG de Exercício (SIAPE)` AS UORG_Exercicio,
+  sco.`Matrícula` AS Matricula,
+  sco.`Situação` AS Situacao,
+  sco.`Cargo` AS Cargo,
+  sco.`Atividade` AS Atividade,
+  sco.`Função` AS Funcao,
+  sco.`Licença` AS Licenca
+FROM `CGU_Servidores_Codevasf.csv` sco;
+
+DROP TABLE IF EXISTS `CGU_EmendasParlamentares.csv`;
+DROP TABLE IF EXISTS `CGU_EmendasParlamentares_Convenios.csv`;
+DROP TABLE IF EXISTS `CGU_EmendasParlamentares_PorFavorecido.csv`;
+DROP TABLE IF EXISTS `CGU_Contratos.csv`;
+DROP TABLE IF EXISTS `CGU_Convenios_Codevasf.csv`;
+DROP TABLE IF EXISTS `CGU_Servidores_Codevasf.csv`;
+
+
+
 CREATE INDEX idx_RFB_Empresas ON RFB_Empresas(CNPJ_Basico, Razao_Social_Nome_Empresarial);
 
 CREATE INDEX idx_RFB_Estabelecimentos ON RFB_Estabelecimentos(CNPJ, CNPJ_Basico);
@@ -1909,6 +2054,4 @@ FROM sqlite_master
 WHERE type = 'table'
   AND name LIKE 'TSE_consulta_cand_%'
   AND name NOT LIKE 'TSE_consulta_cand_%BR%'
-  
-  
 */
